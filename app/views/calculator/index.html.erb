@@ -1,0 +1,127 @@
+<div class="calculator-container">
+  <h1 class="text-center mb-4">Rails Hotwire Calculator</h1>
+  
+  <div class="calculator">
+    <div class="display" id="calculator-display">
+      <%= @display %>
+    </div>
+    
+    <div class="buttons">
+      <div class="row">
+        <%= button_to "C", calculator_clear_path, class: "clear", form: { data: { turbo: true } } %>
+        <%= button_to "/", calculator_operation_path(op: '/'), class: "operator", form: { data: { turbo: true } } %>
+        <%= button_to "×", calculator_operation_path(op: '*'), class: "operator", form: { data: { turbo: true } } %>
+        <%= button_to "-", calculator_operation_path(op: '-'), class: "operator", form: { data: { turbo: true } } %>
+      </div>
+      
+      <div class="row">
+        <%= button_to "7", calculator_append_path(value: '7'), class: "number", form: { data: { turbo: true } } %>
+        <%= button_to "8", calculator_append_path(value: '8'), class: "number", form: { data: { turbo: true } } %>
+        <%= button_to "9", calculator_append_path(value: '9'), class: "number", form: { data: { turbo: true } } %>
+        <%= button_to "+", calculator_operation_path(op: '+'), class: "operator", form: { data: { turbo: true } } %>
+      </div>
+      
+      <div class="row">
+        <%= button_to "4", calculator_append_path(value: '4'), class: "number", form: { data: { turbo: true } } %>
+        <%= button_to "5", calculator_append_path(value: '5'), class: "number", form: { data: { turbo: true } } %>
+        <%= button_to "6", calculator_append_path(value: '6'), class: "number", form: { data: { turbo: true } } %>
+        <%= button_to "=", calculator_calculate_path, class: "equals", form: { data: { turbo: true } } %>
+      </div>
+      
+      <div class="row">
+        <%= button_to "1", calculator_append_path(value: '1'), class: "number", form: { data: { turbo: true } } %>
+        <%= button_to "2", calculator_append_path(value: '2'), class: "number", form: { data: { turbo: true } } %>
+        <%= button_to "3", calculator_append_path(value: '3'), class: "number", form: { data: { turbo: true } } %>
+      </div>
+      
+      <div class="row">
+        <div class="form-zero">
+          <%= button_to "0", calculator_append_path(value: '0'), class: "number", form: { data: { turbo: true } } %>
+        </div>
+        <%= button_to ".", calculator_append_path(value: '.'), class: "decimal", form: { data: { turbo: true } } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .calculator-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .calculator {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .display {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: right;
+    font-size: 24px;
+    font-weight: bold;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .row {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .row form, .form-zero {
+    flex: 1;
+    margin: 0;
+  }
+  
+  .form-zero {
+    flex: 2;
+  }
+  
+  button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .number {
+    background-color: #fff;
+  }
+  
+  .operator {
+    background-color: #f8d486;
+  }
+  
+  .equals {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .clear {
+    background-color: #ff6b6b;
+    color: white;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+</style>
